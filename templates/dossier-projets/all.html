@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{fragments/all.html :: all(~{ :: .thead},~{ :: .tbody})}">
+<table>
+    <thead>
+    <tr class="thead" th:remove="tag">
+        <th>Année</th>
+        <th>Candidat</th>
+        <th>Projet</th>
+        <th>Nombre de résumés</th>
+    </tr>
+    </thead>
+    <tbody class="tbody">
+    <tr th:each="dossierprojet : ${elements}">
+        <div th:replace="~{fragments/all.html :: row(${dossierprojet},~{ :: .data})}">
+            <div class="data">
+                <td>[[${dossierprojet.annee}]]</td>
+                <td>[[${dossierprojet.candidat.nom}]] [[${dossierprojet.candidat.prenom}]]</td>
+                <td>[[${dossierprojet.projet.nom}]]</td>
+                <td>[[${#lists.size(dossierprojet.resumes)}]]</td>
+            </div>
+        </div>
+    </tr>
+    </tbody>
+</table>
+</html>

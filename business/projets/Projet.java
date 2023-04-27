@@ -1,0 +1,32 @@
+package dwn.slrm.business.projets;
+
+import dwn.slrm.business.Personne.Personne;
+import dwn.slrm.business.competence.Competence;
+import dwn.slrm.generic.models.BaseEntity;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Projet extends BaseEntity {
+	
+	@NotBlank(message = "Le nom ne peut pas être vide !")
+    private String nom;
+    @ElementCollection
+    private List<String> contenus;
+    @ManyToMany
+    private List<Competence> competences;
+    @ManyToMany
+    private List<Personne> participants;
+}

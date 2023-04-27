@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{fragments/all.html :: all(~{ :: .thead},~{ :: .tbody})}">
+<table>
+    <thead>
+    <tr class="thead" th:remove="tag">
+        <th>Nom</th>
+        <th>Prenom</th>
+    </tr>
+    </thead>
+    <tbody class="tbody">
+    <tr th:each="personne : ${elements}">
+        <div th:replace="~{fragments/all.html :: row(${personne},~{ :: .data})}">
+            <div class="data">
+                <td>[[${personne.nom}]]</td>
+                <td>[[${personne.prenom}]]</td>
+            </div>
+        </div>
+    </tr>
+    </tbody>
+</table>
+</html>

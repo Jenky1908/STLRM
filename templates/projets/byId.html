@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{fragments/byId.html :: byId(~{ :: form})}">
+    <form th:remove="tag">
+        <div class="col-12">
+            <label> Nom du projet :
+                <input type="text" th:field="*{nom}" placeholder="Entrez un nom de projet...">
+            </label>
+            <p th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></p>
+            <label> Participants :
+                <select th:field="*{participants}" multiple>
+                	<option th:each="participant : ${participants}" th:value="${{participant}}">[[${participant.prenom}]]</option>
+                </select>
+            </label>
+            <p th:if="${#fields.hasErrors('participants')}" th:errors="*{participants}"></p>
+            <label> Compétences :
+                <select th:field="*{competences}" multiple>
+                	<option th:each="competence : ${competences}" th:value="${{competence}}">[[${competence.nom}]]</option>
+                </select>
+            </label>
+            <p th:if="${#fields.hasErrors('competences')}" th:errors="*{competences}"></p>
+        </div>
+    </form>
+</html>
